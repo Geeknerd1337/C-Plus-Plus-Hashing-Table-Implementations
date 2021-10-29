@@ -1,5 +1,6 @@
 
 #include "IntChainHash.h"
+#include "IntLinHash.h"
 
 void DisplayIntChainHash() {
     std::cout << "Hello World!\n";
@@ -27,10 +28,38 @@ void DisplayIntChainHash() {
     cout << "---------------------------------\n";
 }
 
+void DisplayIntLinHash() {
+
+
+    int arr[] = { 23,10,15,33, 16 };
+    string str[] = { "Bob", "Betty", "Joshua Wilson", "Joe", "Billy" };
+    //Standard way of getting length of an array in c++
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Integer Linear Hash Table -------\n";
+
+    IntLinHash integerLinHash(7);
+
+    for (int i = 0; i < len; i++) {
+        integerLinHash.InsertItem(arr[i]);
+    }
+
+    integerLinHash.DeleteItem(45);
+
+    integerLinHash.DisplayHash();
+
+    cout << "BUCKET OF INDEX 23: " << integerLinHash.HashSearch(23) << endl;
+    cout << "BUCKET OF INDEX 16: " << integerLinHash.HashSearch(16) << endl;
+    cout << "BUCKET OF INDEX 2: " << integerLinHash.HashSearch(2) << endl;
+    cout << "---------------------------------\n";
+}
+
+
 int main()
 {
     DisplayIntChainHash();
-
+    cout << "\n\n\n" << endl;
+    DisplayIntLinHash();
 
 }
 
