@@ -1,12 +1,12 @@
 
 #include "IntChainHash.h"
 
-int main()
-{
+void DisplayIntChainHash() {
     std::cout << "Hello World!\n";
 
-    int arr[] = { 23,45,10,15,23 };
+    int arr[] = { 23,45,10,15,33, 16 };
     string str[] = { "Bob", "Betty", "Joshua Wilson", "Joe", "Billy" };
+    //Standard way of getting length of an array in c++
     int len = sizeof(arr) / sizeof(arr[0]);
 
     cout << "Integer Chain Hash Table -------\n";
@@ -21,6 +21,18 @@ int main()
 
     integerChainHash.DisplayHash();
 
+    cout << "BUCKET OF INDEX 23: " << integerChainHash.HashSearch(23) << endl;
+    cout << "BUCKET OF INDEX 16: " << integerChainHash.HashSearch(16) << endl;
+    cout << "BUCKET OF INDEX 2: " << integerChainHash.HashSearch(2) << endl;
+    cout << "---------------------------------\n";
+}
+
+int main()
+{
+    DisplayIntChainHash();
+
 
 }
+
+
 
