@@ -15,6 +15,9 @@
     <Filter Include="Source Files\IntLInHash">
       <UniqueIdentifier>{09dc4b74-a159-4e27-be66-2ab64fb67731}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\IntQuadHash">
+      <UniqueIdentifier>{89a978f0-3859-475c-b803-4cf499182677}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HashingTables.cpp">
@@ -26,6 +29,9 @@
     <ClCompile Include="IntLinHash.cpp">
       <Filter>Source Files\IntLInHash</Filter>
     </ClCompile>
+    <ClCompile Include="IntQuadHash.cpp">
+      <Filter>Source Files\IntQuadHash</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IntChainHash.h">
@@ -33,6 +39,9 @@
     </ClInclude>
     <ClInclude Include="IntLinHash.h">
       <Filter>Source Files\IntLInHash</Filter>
+    </ClInclude>
+    <ClInclude Include="IntQuadHash.h">
+      <Filter>Source Files\IntQuadHash</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

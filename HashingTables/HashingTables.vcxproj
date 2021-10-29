@@ -142,10 +142,12 @@
     <ClCompile Include="HashingTables.cpp" />
     <ClCompile Include="IntChainHash.cpp" />
     <ClCompile Include="IntLinHash.cpp" />
+    <ClCompile Include="IntQuadHash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IntChainHash.h" />
     <ClInclude Include="IntLinHash.h" />
+    <ClInclude Include="IntQuadHash.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

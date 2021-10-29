@@ -1,11 +1,11 @@
-#include "IntLinHash.h";
+#include "IntQuadHash.h";
 
 
 /// <summary>
-/// Constructor for the Linear Integer Hash Table
+/// Constructor for the Quad Integer Hash Table
 /// </summary>
 /// <param name="n">The Size of The Hash</param>
-IntLinHash::IntLinHash(int n) {
+IntQuadHash::IntQuadHash(int n) {
 	SIZE = n;
 	table = new int[SIZE];
 	for (int i = 0; i < SIZE; i++) {
@@ -14,34 +14,35 @@ IntLinHash::IntLinHash(int n) {
 }
 
 /// <summary>
-/// Inserts an item using a linear insert,
-/// which will look in subsequent buckets if the current one is filled.
+/// Inserts an item using a quadratic insert,
 /// </summary>
 /// <param name="x">The item to insert into the array</param>
-void IntLinHash::InsertItem(int x) {
-	int index = HashFunction(x);
+void IntQuadHash::InsertItem(int x) {
+	int i = 0;
 	int indexesProbed = 0;
+	int index = HashFunction(x);
 
 	while (indexesProbed < SIZE) {
 		if (table[index] == -1) {
 			table[index] = x;
-			
 			return;
 		}
+		int c1 = 1;
+		int c2 = 1;
+		i++;
+
+		index = (HashFunction(x) + c1 * i + c2 *i * i) % SIZE;
 		
-
-		index = (index + 1) % SIZE;
-
-		++indexesProbed;
+		indexesProbed++;
 	}
 }
 
 /// <summary>
-/// The hashing function for the Integer Linear Hash
+/// The hashing function for the Integer Quad Hash
 /// </summary>
 /// <param name="x">The key</param>
 /// <returns>The bucket this number belongs to</returns>
-int IntLinHash::HashFunction(int x) {
+int IntQuadHash::HashFunction(int x) {
 	return (x % SIZE);
 }
 
@@ -49,7 +50,7 @@ int IntLinHash::HashFunction(int x) {
 /// Removes the given number from the hash table if it exists.
 /// </summary>
 /// <param name="key">The number we're searching for</param>
-void IntLinHash::DeleteItem(int key) {
+void IntQuadHash::DeleteItem(int key) {
 	int index = HashSearch(key);
 	
 	if (index != -1) {
@@ -63,15 +64,21 @@ void IntLinHash::DeleteItem(int key) {
 /// </summary>
 /// <param name="x">They key to search for</param>
 /// <returns>If the key exists, the bucket for which it belongs</returns>
-int IntLinHash::HashSearch(int x) {
+int IntQuadHash::HashSearch(int x) {
 	int index = HashFunction(x);
 	int indexesProbed = 0;
+	int i = 0;
 
 	while (indexesProbed < SIZE) {
 		if (table[index] == x) {
 			return index;
 		}
-		index = (index + 1) % SIZE;
+
+		int c1 = 1;
+		int c2 = 1;
+		i++;
+		
+ 		index = (HashFunction(x) + c1 * i + c2 * i * i) % SIZE;
 
 		++indexesProbed;
 	}
@@ -81,7 +88,7 @@ int IntLinHash::HashSearch(int x) {
 /// <summary>
 /// Displays the hash
 /// </summary>
-void IntLinHash::DisplayHash() {
+void IntQuadHash::DisplayHash() {
 	for (int i = 0; i < SIZE; i++) {
 		cout << i << "---   " << table[HashFunction(i)];
 		cout << endl;

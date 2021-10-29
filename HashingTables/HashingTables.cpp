@@ -1,6 +1,7 @@
 
 #include "IntChainHash.h"
 #include "IntLinHash.h"
+#include "IntQuadHash.h"
 
 void DisplayIntChainHash() {
     std::cout << "Hello World!\n";
@@ -54,12 +55,39 @@ void DisplayIntLinHash() {
     cout << "---------------------------------\n";
 }
 
+void DisplayIntQuadHash() {
+
+
+    int arr[] = { 23,10,45,33, 16 };
+    string str[] = { "Bob", "Betty", "Joshua Wilson", "Joe", "Billy" };
+    //Standard way of getting length of an array in c++
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Integer Quad Hash Table -------\n";
+
+    IntQuadHash integerQuadHash(7);
+
+    for (int i = 0; i < len; i++) {
+        integerQuadHash.InsertItem(arr[i]);
+    }
+
+    integerQuadHash.DeleteItem(45);
+
+    integerQuadHash.DisplayHash();
+
+    cout << "BUCKET OF INDEX 23: " << integerQuadHash.HashSearch(23) << endl;
+    cout << "BUCKET OF INDEX 16: " << integerQuadHash.HashSearch(16) << endl;
+    cout << "BUCKET OF INDEX 2: " << integerQuadHash.HashSearch(2) << endl;
+    cout << "---------------------------------\n";
+}
 
 int main()
 {
     DisplayIntChainHash();
     cout << "\n\n\n" << endl;
     DisplayIntLinHash();
+    cout << "\n\n\n" << endl;
+    DisplayIntQuadHash();
 
 }
 
